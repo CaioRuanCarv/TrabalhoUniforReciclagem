@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh; 
+      background-color: #f4f4f4;
+    }
+
+    .titulo-cadastro {
+    color: #0e9b26; 
+    }
+    
+    .form-container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 200%;
+      max-width: 400px; 
+    }
+
+    .form-container h1 {
+      text-align: center; 
+      margin-bottom: 20px; 
+    }
+
+    form {
+      display: flex;
+      flex-direction: column; 
+    }
+
+    input, select, button {
+      margin-bottom: 15px; 
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box; 
+    }
+
+    button {
+      background-color: #0e9b26;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0e7c20;
+    }
+
+    .login-message {
+    text-align: center; 
+    margin-top: 15px; 
+    font-size: 14px; 
+    color: #555; 
+    }
+
+    .login-message a {
+    color: #0e9b26; 
+    text-decoration: none; 
+    font-weight: bold; 
+    }
+
+    .login-message a:hover {
+    text-decoration: underline; 
+    }
+
+  </style>
+</head>
+<body>
+<div class="form-container">
+    <h1 class="titulo-cadastro">Cadastro</h1>
+    <form action="/submit" method="POST">
+      <input type="text" 
+      name="username" 
+      placeholder="Nome" required>
+
+      <input type="email" 
+      name="email" 
+      placeholder="Email" 
+      required 
+      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
+      title="Por favor, insira um email válido, como exemplo@dominio.com">
+
+      <input type="tel" 
+      name="cellphone" 
+      placeholder="Telefone" 
+      required 
+      pattern="[0-9]{8,15}" 
+      title="Por favor, insira apenas números">
+
+      <label for="type_profile">Nível de conhecimento em reciclagem: </label>
+      <select name="type_profile" id="type_profile" required>
+        <option value="Iniciante">Iniciante</option>
+        <option value="Intermediário">Intermediário</option>
+        <option value="Avançado">Avançado</option>
+      </select>
+      <input type="password" name="password" placeholder="Senha" required>
+      <button type="submit">Criar Conta</button>
+
+    <!-- Mensagem abaixo do botão -->
+    <p class="login-message">
+    Já possui cadastro? <a href="tela de login.html">Faça login</a>
+    </p>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('signup-form').addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const formData = {
+        username: document.getElementById('username').value,
+        email: document.getElementById('email').value,
+        cellphone: document.getElementById('cellphone').value,
+        type_profile: document.getElementById('type_profile').value,
+        password: document.getElementById('password').value,
+      };
+
+      try {
+        const response = await fetch('', { // Substituir pela URL da API do backend
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData),
+        });
+
+        if (response.ok) {
+          alert('Cadastro realizado com sucesso!');
+          
+        } else {
+          const error = await response.json();
+          alert('Erro ao cadastrar: ' + error.message);
+        }
+      } catch (error) {
+        alert('Erro ao conectar com o servidor.');
+        console.error(error);
+      }
+    });
+  </script>
+
+</body>
+</html>

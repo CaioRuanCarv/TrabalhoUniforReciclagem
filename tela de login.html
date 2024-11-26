@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; 
+    margin: 0;
+    padding: 0;
+}
+    
+    .container { 
+    box-sizing: border-box; 
+    background-color: #fff;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.form-container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 200%;
+      max-width: 400px; 
+    }
+
+    .form-container h1 {
+      text-align: center; 
+      margin-bottom: 20px; 
+    }
+    form {
+      display: flex;
+      flex-direction: column; 
+    }
+
+    input, select, button {
+      margin-bottom: 15px; 
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box; 
+    }
+
+    button {
+      background-color: #0e9b26;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0e7c20;
+    }
+
+    .titulo-login {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #0e9b26; 
+    }
+    
+    .signup-link {
+    text-align: center; 
+    margin-top: 15px; 
+    font-size: 14px; 
+    color: #555; 
+    }
+
+    .signup-link a {
+    color: #0e9b26; 
+    text-decoration: none; 
+    font-weight: bold; 
+    }
+
+    .signup-link a:hover {
+    text-decoration: underline; 
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="titulo-login">Login</h1>
+      <form>
+        <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Senha" required>
+        <button type="submit" class="btn btn-success">Entrar</button>
+        <p class="signup-link">Não possui conta? <a href="cadastro.html">Cadastre-se</a></p>
+      </form>
+    </div>
+
+    <script>
+        const loginForm = document.querySelector("form");
+      
+        loginForm.addEventListener("submit", function (event) {
+          event.preventDefault(); 
+
+          if (email && senha) {
+            // Redireciona para a landing page
+            window.location.href = "index.html";
+          } else {
+            alert("Preencha todos os campos!");
+          }
+        });
+      </script>
+</body>
+</html>
